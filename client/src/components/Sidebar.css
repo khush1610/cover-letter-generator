@@ -1,0 +1,137 @@
+/* Sidebar base styles */
+.sidebar {
+  background-color: #f5f7fa;
+  color: #333;
+  width: 240px;
+  min-height: 100vh;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  border-right: 1px solid #ddd;
+  padding-top: 1rem;
+  box-sizing: border-box;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* Toggle button */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #555 !important;
+  font-size: 1rem;
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.toggle-btn:hover {
+  color: #555 !important;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  flex-grow: 1; /* Ensures nav takes remaining space */
+}
+
+/* For both expanded and collapsed */
+.nav-item {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 12px;
+  margin: 4px 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #555;
+  transition: background 0.2s, color 0.2s;
+  overflow: hidden;
+}
+
+/* Adjust icon when collapsed */
+.sidebar.collapsed .nav-item {
+  justify-content: center;
+  padding: 12px 0;
+}
+
+/* Icon */
+.nav-item .icon {
+  font-size: 1.5rem;
+  color: #444;
+  margin-right: 1rem;
+  width: auto;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sidebar.collapsed .nav-item .icon {
+  margin: 0 auto;
+}
+
+.sidebar.collapsed .nav-item .label {
+  display: none;
+}
+
+/* Hover and active states */
+.nav-item:hover,
+.nav-item.active {
+  background-color: #e0e6ee;
+  color: #000;
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 70px; /* Collapsed by default on smaller screens */
+    min-height: 100vh; /* Ensure background covers full height */
+    background-color: #f5f7fa; /* Explicitly set background */
+  }
+
+  .sidebar.collapsed {
+    width: 70px; /* Consistent width when collapsed */
+  }
+
+  .nav-item {
+    justify-content: center;
+    padding: 12px 0;
+  }
+
+  .nav-item .icon {
+    margin: 0 auto;
+  }
+
+  .nav-item .label {
+    display: none; /* Hide labels on mobile */
+  }
+
+  .toggle-btn {
+    text-align: center; /* Center toggle button icon */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 60px; /* Slightly narrower for mobile */
+    min-height: 100vh; /* Ensure full height */
+    background-color: #f5f7fa; /* Ensure background persists */
+  }
+
+  .sidebar.collapsed {
+    width: 60px;
+  }
+
+  .nav-item .icon {
+    font-size: 1.4rem; /* Slightly smaller icon for mobile */
+  }
+}
